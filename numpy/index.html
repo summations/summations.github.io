@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">Numpy Refresher - Summations</title><meta name="Description" content="This article shows the basic Markdown syntax and format."><meta property="og:title" content="Numpy Refresher" />
+<meta property="og:description" content="This article shows the basic Markdown syntax and format." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="summations.github.io/numpy/" /><meta property="og:image" content="/images/avatar.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-04-01T21:57:40+08:00" />
+<meta property="article:modified_time" content="2022-05-01T16:45:40+08:00" /><meta property="og:site_name" content="Hugo DoIt Theme Documentation" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/images/avatar.webp"/>
+
+<meta name="twitter:title" content="Numpy Refresher"/>
+<meta name="twitter:description" content="This article shows the basic Markdown syntax and format."/>
+<meta name="application-name" content="Summations">
+<meta name="apple-mobile-web-app-title" content="Summations">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="summations.github.io/numpy/" /><link rel="prev" href="summations.github.io/channel/" /><link rel="stylesheet" href="/summations.github.io/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/summations.github.io/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/summations.github.io/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/summations.github.io/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/summations.github.io/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/summations.github.io/lib/animate/animate.min.css"></noscript><meta name="google-site-verification" content="MQ8DNu27ayX6B_4ObiEDK09vGr1fdy7kOAnbd09hJk4" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Numpy Refresher",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "summations.github.io\/numpy\/"
+        },"image": ["\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "numpy, deeplearning","wordcount":  1179 ,
+        "url": "summations.github.io\/numpy\/","datePublished": "2022-04-01T21:57:40+08:00","dateModified": "2022-05-01T16:45:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "\/summations.github.io\/images\/avatar.webp",
+                    "width":  528 ,
+                    "height":  560 
+                }},"authors": [{
+                    "@type": "Person",
+                    "name": "Rahul"
+                }],"description": "This article shows the basic Markdown syntax and format."
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="summations.github.io/" title="Summations"><span class="header-title-pre"><i class='fa fa-coffee'></i></span><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/summations.github.io/posts/"> Posts </a><a class="menu-item" href="/summations.github.io/tags/"> Tags </a><a class="menu-item" href="/summations.github.io/categories/"> Categories </a><a class="menu-item" href="/summations.github.io/series/"> Series </a><a class="menu-item" href="/summations.github.io/showcase/"> Showcase </a><a class="menu-item" href="/summations.github.io/about/rahulpathak.pdf"> About </a><a class="menu-item" href="https://github.com/pathakraul" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="Switch Theme">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="black">Black</option>
+                        <option value="auto">Auto</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="summations.github.io/" title="Summations"><span class="header-title-pre"><i class='fa fa-coffee'></i></span><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/summations.github.io/posts/" title="">Posts</a><a class="menu-item" href="/summations.github.io/tags/" title="">Tags</a><a class="menu-item" href="/summations.github.io/categories/" title="">Categories</a><a class="menu-item" href="/summations.github.io/series/" title="">Series</a><a class="menu-item" href="/summations.github.io/showcase/" title="">Showcase</a><a class="menu-item" href="/summations.github.io/about/rahulpathak.pdf" title="">About</a><a class="menu-item" href="https://github.com/pathakraul" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-select" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="Switch Theme">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="black">Black</option>
+                    <option value="auto">Auto</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">Contents</h2>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-numpy">What is Numpy</a></li>
+    <li><a href="#imporrant-numpy-arrays-attributes">Imporrant NumPy Arrays Attributes</a></li>
+    <li><a href="#how-to-create-an-simple-numpy-array"><strong>How to create an simple numpy array</strong></a></li>
+    <li><a href="#creating-a-multidimensional-array">Creating a multidimensional array</a></li>
+    <li><a href="#arrays-from-scratch"><strong>Arrays from Scratch</strong></a>
+      <ul>
+        <li><a href="#how-about-a-little-more-flexibility-in-creating-the-numpy-array">How about a little more flexibility in creating the numpy array</a>
+          <ul>
+            <li><a href="#1-creating-the-linear-sequence-of-array-with-flexibility-of-providing-step-size">1. Creating the linear sequence of array with flexibility of providing step size</a></li>
+            <li><a href="#2--creating-the-linear-sequence-of-array-with-fliexibility-of-providing-the-number-values-required">2.  Creating the linear sequence of array with fliexibility of providing the number values required</a></li>
+          </ul>
+        </li>
+        <li><a href="#array-with-distributed-random-values">Array with distributed random values</a>
+          <ul>
+            <li><a href="#array-of-uniformly-distributed-random-values-between-0-and-1">Array of uniformly distributed random values between 0 and 1</a></li>
+            <li><a href="#identity-matrix">Identity Matrix</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#numpy-standard-data-types"><strong>NumPy Standard Data Types</strong></a></li>
+    <li><a href="#numpy-random-generator---seed-the-randomstate"><strong>NumPy Random Generator - Seed the RandomState</strong></a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Numpy Refresher</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><span class='author'><i class="author fas fa-user-circle fa-fw"></i><span class='screen-reader-text'>  </span><a href='/summations.github.io/authors/rahul'>Rahul</a></span>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="summations.github.io/categories/documentation/"><i class="far fa-folder fa-fw"></i>Documentation</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-04-01">2022-04-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-01">2022-05-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1179 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;6 minutes&nbsp;<span id="summations.github.io/numpy/" class="leancloud_visitors" data-flag-title="Numpy Refresher">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class="leancloud-visitors-count" id=twikoo_visitors></span>&nbsp;views
+                    </span>&nbsp;<span id="summations.github.io/numpy/" class="comment_count" data-flag-title="Numpy Refresher">
+                        <i class="far fa-comments fa-fw"></i>&nbsp;<span class="twikoo-comment-count" id="twikoo-comment-count"></span>&nbsp;comments
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-numpy">What is Numpy</a></li>
+    <li><a href="#imporrant-numpy-arrays-attributes">Imporrant NumPy Arrays Attributes</a></li>
+    <li><a href="#how-to-create-an-simple-numpy-array"><strong>How to create an simple numpy array</strong></a></li>
+    <li><a href="#creating-a-multidimensional-array">Creating a multidimensional array</a></li>
+    <li><a href="#arrays-from-scratch"><strong>Arrays from Scratch</strong></a>
+      <ul>
+        <li><a href="#how-about-a-little-more-flexibility-in-creating-the-numpy-array">How about a little more flexibility in creating the numpy array</a>
+          <ul>
+            <li><a href="#1-creating-the-linear-sequence-of-array-with-flexibility-of-providing-step-size">1. Creating the linear sequence of array with flexibility of providing step size</a></li>
+            <li><a href="#2--creating-the-linear-sequence-of-array-with-fliexibility-of-providing-the-number-values-required">2.  Creating the linear sequence of array with fliexibility of providing the number values required</a></li>
+          </ul>
+        </li>
+        <li><a href="#array-with-distributed-random-values">Array with distributed random values</a>
+          <ul>
+            <li><a href="#array-of-uniformly-distributed-random-values-between-0-and-1">Array of uniformly distributed random values between 0 and 1</a></li>
+            <li><a href="#identity-matrix">Identity Matrix</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#numpy-standard-data-types"><strong>NumPy Standard Data Types</strong></a></li>
+    <li><a href="#numpy-random-generator---seed-the-randomstate"><strong>NumPy Random Generator - Seed the RandomState</strong></a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><a href="http://www.numpy.org" target="_blank" rel="noopener noreffer">Numpy</a> is a package used for scientific computing in python. Numpy&rsquo;s core is implemented in C/C++ providing fast implementations of matrices operations. Numpy also utilizes the processors SIMD and other instructions to make implementation faster</p>
+<h2 id="what-is-numpy" class="headerLink">
+    <a href="#what-is-numpy" class="header-mark"></a>1 What is Numpy</h2><p>Numpy is a package used for scientific computing in python. Numpy&rsquo;s core is implemented in C/C++ providing fast implementations of matrices operations. Numpy also utilizes the processors SIMD and other instructions to make implementation faster. Main offering of Numpy is powerful N-dimensional array object and useful linear algebra, Fourier transform, and random number capabilities.
+Numpy main object is homogeneous multidimensional arrays. Indexed by the positive tuple of integers.
+Its dimensions are called <strong>axes</strong>. No of axes is called <strong>rank</strong>. <br>
+Axes length is the no of elements in that dimension. Normally, <strong>axes 0</strong> is <strong>rows</strong> and <strong>axes 1</strong> is <strong>column</strong></p>
+<h2 id="imporrant-numpy-arrays-attributes" class="headerLink">
+    <a href="#imporrant-numpy-arrays-attributes" class="header-mark"></a>2 Imporrant NumPy Arrays Attributes</h2><ol>
+<li><strong>ndim</strong> No of dimensions</li>
+<li><strong>shape</strong> Size of each dimension</li>
+<li><strong>size</strong> Total array size in bytes</li>
+<li><strong>itemsize</strong> Size of an element in bytes</li>
+<li><strong>nbytes</strong> Total array size in bytes</li>
+</ol>
+<p>I will cover them in detail but first lets understand few ways to create numpy arrays.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="how-to-create-an-simple-numpy-array" class="headerLink">
+    <a href="#how-to-create-an-simple-numpy-array" class="header-mark"></a>3 <strong>How to create an simple numpy array</strong></h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">arr</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="output">
+<pre><code>array([1, 2, 3, 4, 5])
+</code></pre>
+</div>
+<p>All items in numpy array should have same data type. If not then numpy will upcast the needed ones</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">arr</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="output">
+<pre><code>array([ 1.1,  2. ,  3. ,  4. ,  5. ])
+</code></pre>
+</div>
+<p>Otherwise one can explicitly assign the datatype using <strong>&ldquo;dtype&rdquo;</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="creating-a-multidimensional-array" class="headerLink">
+    <a href="#creating-a-multidimensional-array" class="header-mark"></a>4 Creating a multidimensional array</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="output">
+<pre><code>array([[2, 3, 4],
+       [4, 5, 6],
+       [6, 7, 8]])
+</code></pre>
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="output">
+    (1, 99)
+    <br>
+    2
+    <br>
+<pre><code>array([[ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17,
+        18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
+        35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51,
+        52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68,
+        69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85,
+        86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]])
+</code></pre>
+</div>
+<h2 id="arrays-from-scratch" class="headerLink">
+    <a href="#arrays-from-scratch" class="header-mark"></a>5 <strong>Arrays from Scratch</strong></h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># np.zeros(shape, dtype=float, order=&#39;C&#39;)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="c1">#shape is a tuple and passed with brackets</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="output">
+<pre><code>array([[ 0.,  0.,  0.],
+       [ 0.,  0.,  0.]])
+</code></pre>
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># np.ones(shape, dtype=None, order=&#39;C&#39;)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="output">
+<pre><code>array([[1, 1, 1],
+       [1, 1, 1]])
+</code></pre>
+</div>
+<p>How about a matrix of all the same value</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># np.full(shape, fill_value, dtype=None, order=&#39;C&#39;)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mf">3.1</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="output">
+<pre><code>array([[ 3.1,  3.1],
+       [ 3.1,  3.1],
+       [ 3.1,  3.1]])
+</code></pre>
+</div>
+<h3 id="how-about-a-little-more-flexibility-in-creating-the-numpy-array" class="headerLink">
+    <a href="#how-about-a-little-more-flexibility-in-creating-the-numpy-array" class="header-mark"></a>5.1 How about a little more flexibility in creating the numpy array</h3><h4 id="1-creating-the-linear-sequence-of-array-with-flexibility-of-providing-step-size" class="headerLink">
+    <a href="#1-creating-the-linear-sequence-of-array-with-flexibility-of-providing-step-size" class="header-mark"></a>5.1.1 1. Creating the linear sequence of array with flexibility of providing step size</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># np.arange([start,] stop[, step,], dtype=None)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="output">
+    [1 2 3 4 5 6 7 8 9]
+    [ 1.   1.5  2.   2.5  3.   3.5  4.   4.5  5.   5.5  6.   6.5  7.   7.5  8.
+      8.5  9.   9.5]
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+<span class="o">...</span>    <span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="output">
+    1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># Floating point step size</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="output">
+    [ 1.   1.5  2.   2.5  3.   3.5  4.   4.5  5.   5.5  6.   6.5  7.   7.5  8.
+      8.5  9.   9.5]
+    [1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9]
+</div>
+<h4 id="2--creating-the-linear-sequence-of-array-with-fliexibility-of-providing-the-number-values-required" class="headerLink">
+    <a href="#2--creating-the-linear-sequence-of-array-with-fliexibility-of-providing-the-number-values-required" class="header-mark"></a>5.1.2 2.  Creating the linear sequence of array with fliexibility of providing the number values required</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># np.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Samples ----&gt;&#34;</span><span class="p">,</span> <span class="n">sample</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sample</span><span class="p">,</span><span class="n">step</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">retstep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Step ----&gt;&#34;</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="output">
+    Samples ----> [  1.           1.18367347   1.36734694   1.55102041   1.73469388
+       1.91836735   2.10204082   2.28571429   2.46938776   2.65306122
+       2.83673469   3.02040816   3.20408163   3.3877551    3.57142857
+       3.75510204   3.93877551   4.12244898   4.30612245   4.48979592
+       4.67346939   4.85714286   5.04081633   5.2244898    5.40816327
+       5.59183673   5.7755102    5.95918367   6.14285714   6.32653061
+       6.51020408   6.69387755   6.87755102   7.06122449   7.24489796
+       7.42857143   7.6122449    7.79591837   7.97959184   8.16326531
+       8.34693878   8.53061224   8.71428571   8.89795918   9.08163265
+       9.26530612   9.44897959   9.63265306   9.81632653  10.        ] 
+    Step ----> 0.473684210526
+</div>
+<h3 id="array-with-distributed-random-values" class="headerLink">
+    <a href="#array-with-distributed-random-values" class="header-mark"></a>5.2 Array with distributed random values</h3><h4 id="array-of-uniformly-distributed-random-values-between-0-and-1" class="headerLink">
+    <a href="#array-of-uniformly-distributed-random-values-between-0-and-1" class="header-mark"></a>5.2.1 Array of uniformly distributed random values between 0 and 1</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># np.random.random_sample(size=None)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="output">
+<pre><code>array([[ 0.86739782,  0.56355004],
+       [ 0.70993532,  0.06739621],
+       [ 0.53815033,  0.59688062]])
+</code></pre>
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># np.random.normal(loc=0.0, scale=1.0, size=None)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="output">
+<pre><code>array([[ 0.97078719,  0.32316481,  0.64860467],
+       [-0.41963849,  0.1416606 , -2.00128317],
+       [-1.20452905, -0.86871742,  1.10516725]])
+</code></pre>
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1">#randint(low, high=None, size=None, dtype=&#39;l&#39;)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="output">
+<pre><code>array([14, 48, 77])
+</code></pre>
+</div>
+<h4 id="identity-matrix" class="headerLink">
+    <a href="#identity-matrix" class="header-mark"></a>5.2.2 Identity Matrix</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># np.eye(N, M=None, k=0, dtype=&lt;class &#39;float&#39;&gt;)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="output">
+    array([[ 1.,  0.,  0.,  0.],
+           [ 0.,  1.,  0.,  0.],
+           [ 0.,  0.,  1.,  0.],
+           [ 0.,  0.,  0.,  1.]])
+</div>
+<h2 id="numpy-standard-data-types" class="headerLink">
+    <a href="#numpy-standard-data-types" class="header-mark"></a>6 <strong>NumPy Standard Data Types</strong></h2><p><strong>bool_</strong> Boolean (True or False) stored as a byte <br>
+<strong>int_</strong> Default integer type (same as C long; normally either int64 or int32) <br>
+<strong>intc</strong> Identical to C int (normally int32 or int64) <br>
+<strong>intp</strong> Integer used for indexing (same as C ssize_t; normally either int32 or int64) <br>
+<strong>int8</strong> Byte (–128 to 127) <br>
+<strong>int16</strong> Integer (–32768 to 32767) <br>
+<strong>int32</strong> Integer (–2147483648 to 2147483647) <br>
+<strong>int64</strong> Integer (–9223372036854775808 to 9223372036854775807) <br>
+<strong>uint8</strong> Unsigned integer (0 to 255) <br>
+<strong>uint16</strong> Unsigned integer (0 to 65535) <br>
+<strong>uint32</strong> Unsigned integer (0 to 4294967295) <br>
+<strong>uint64</strong> Unsigned integer (0 to 18446744073709551615) <br>
+<strong>float_</strong>  Shorthand for float64 <br>
+<strong>float16</strong> Half-precision float: sign bit, 5 bits exponent, 10 bits mantissa <br>
+<strong>float32</strong> Single-precision float: sign bit, 8 bits exponent, 23 bits mantissa <br>
+<strong>float64</strong> Double-precision float: sign bit, 11 bits exponent, 52 bits mantissa <br></p>
+<h2 id="numpy-random-generator---seed-the-randomstate" class="headerLink">
+    <a href="#numpy-random-generator---seed-the-randomstate" class="header-mark"></a>7 <strong>NumPy Random Generator - Seed the RandomState</strong></h2><p>numpy random generator can be seeded with a <em>seed</em> value to make sure that same random arrays are generated each time the code runs.</p>
+<p>Seeding the random generator allows the generator to generate the same random values everytime. It names values in the array predictible
+<strong>np.random.seed(0)</strong></p>
+<blockquote>
+<p>np.random.seed(0); np.random.randint(10, size=6) <br>
+np.random.seed(0); np.random.randint(10, size=6)</p>
+</blockquote>
+<p>Above code will generate same array everytime</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x1</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="output">
+    [5 8 9 5 0 0]
+    [[1 7 6 9]
+     [2 4 5 2]
+     [4 2 4 7]]
+    [[[7 9 1 7 0]
+      [6 9 9 7 6]
+      [9 1 0 1 8]
+      [8 3 9 8 7]]
+<pre><code> [[3 6 5 1 9]
+  [3 4 8 1 4]
+  [0 3 9 2 0]
+  [4 9 2 7 7]]
+
+ [[9 8 6 9 3]
+  [7 7 4 5 9]
+  [3 6 8 0 2]
+  [7 7 9 7 3]]]
+</code></pre>
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="output">
+<pre><code>array([5, 0, 3, 3, 7, 9])
+</code></pre>
+</div>
+</div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-05-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=summations.github.io/numpy/index.md target="_blank" rel="noopener noreferrer">Read markdown</a>
+                    </span><span>|&nbsp;<a class="link-to-source" href=https://github.com/HEIGE-PCloud/DoIt/blob/main/exampleSite/content/posts/numpy/index.en.md target="_blank" rel="noopener noreferrer">View source</a>
+                    </span><span>|&nbsp;<a class="link-to-edit" href=https://github.com/HEIGE-PCloud/DoIt/edit/main/exampleSite/content/posts/numpy/index.en.md target="_blank" rel="noopener noreferrer">Edit this page</a>
+                    </span><span>|&nbsp;<a class="link-to-report" href=https://github.com/HEIGE-PCloud/DoIt/issues/new?title=[bug]%20Numpy+Refresher&body=|Field|Value|%0A|-|-|%0A|Title|Numpy+Refresher|%0A|Url|summations.github.io/numpy/|%0A|Filename|https://github.com/HEIGE-PCloud/DoIt/blob/main/exampleSite/content/posts/numpy/index.en.md| target="_blank" rel="noopener noreferrer">Report issue</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span><a href="#" onclick="return false;" title="Share on Twitter" data-sharer="twitter" data-url="summations.github.io/numpy/" data-title="Numpy Refresher" data-via="pathakraul" data-hashtags="numpy,deeplearning"><i class="fab fa-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Facebook" data-sharer="facebook" data-url="summations.github.io/numpy/" data-hashtag="numpy"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Hacker News" data-sharer="hackernews" data-url="summations.github.io/numpy/" data-title="Numpy Refresher"><i class="fab fa-hacker-news fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Reddit" data-sharer="reddit" data-url="summations.github.io/numpy/"><i class="fab fa-reddit fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Line" data-sharer="line" data-url="summations.github.io/numpy/" data-title="Numpy Refresher"><i data-svg-src="/summations.github.io/lib/simple-icons/icons/line.min.svg"></i></a><a href="#" onclick="return false;" title="Share on 微博" data-sharer="weibo" data-url="summations.github.io/numpy/" data-title="Numpy Refresher"><i class="fab fa-weibo fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Telegram" data-sharer="telegram" data-url="summations.github.io/numpy/" data-title="Numpy Refresher" data-web><i class="fab fa-telegram-plane fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="summations.github.io/tags/numpy/">numpy</a>,&nbsp;<a href="summations.github.io/tags/deeplearning/">deeplearning</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="summations.github.io/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="summations.github.io/channel/" class="prev" rel="prev" title="RGB Image Channels Plot using Numpy"><i class="fas fa-angle-left fa-fw"></i>RGB Image Channels Plot using Numpy</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript><div id="twikoo"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://twikoo.js.org/">Twikoo</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">
+                    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a>&nbsp;|&nbsp;Theme - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="Back to Top">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="/summations.github.io/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/summations.github.io/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/summations.github.io/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/summations.github.io/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/summations.github.io/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/summations.github.io/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/summations.github.io/js/theme.min.js" defer></script></div>
+
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"twikoo":{"commentCount":true,"el":"#twikoo","envId":"https://doit-docs-comment-twikoo.vercel.app/","lang":"en"}},"data":{"desktop-header-typeit":"SUMMATIONS","mobile-header-typeit":"SUMMATIONS"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"5YGRNRQK1G","algoliaIndex":"en_index","algoliaSearchKey":"0ff6874805de24b84aa1d5ebccad56cd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":300,"type":"algolia"},"sharerjs":true,"table":{"sort":true},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="https://summations.disqus.com/embed.js" defer></script><script type="text/javascript" src="/summations.github.io/lib/twikoo/twikoo.all.min.js" defer></script><script type="text/javascript" src="/summations.github.io/js/twikoo.min.js" defer></script><script type="text/javascript" src="/summations.github.io/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/summations.github.io/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/summations.github.io/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/summations.github.io/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/summations.github.io/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/summations.github.io/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/summations.github.io/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/summations.github.io/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/summations.github.io/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/summations.github.io/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/summations.github.io/js/katex.min.js" defer></script><link rel="stylesheet" href="/summations.github.io/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/summations.github.io/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/summations.github.io/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/summations.github.io/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>
