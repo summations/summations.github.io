@@ -24,7 +24,7 @@ I will cover them in detail but first lets understand few ways to create numpy a
 >>> import numpy as np
 ```
 
-## **How to create an simple numpy array**
+## How to create an simple numpy array
 
 
 ```python
@@ -102,7 +102,7 @@ Otherwise one can explicitly assign the datatype using **"dtype"**
 
 </div>
 
-## **Arrays from Scratch**
+## Arrays from Scratch
 
 
 ```python
@@ -201,8 +201,9 @@ How about a matrix of all the same value
 >>> print("Step ---->", step)
 ```
 
-<div class="output">
-    Samples ----> [  1.           1.18367347   1.36734694   1.55102041   1.73469388
+```
+    Samples
+    [  1.           1.18367347   1.36734694   1.55102041   1.73469388
        1.91836735   2.10204082   2.28571429   2.46938776   2.65306122
        2.83673469   3.02040816   3.20408163   3.3877551    3.57142857
        3.75510204   3.93877551   4.12244898   4.30612245   4.48979592
@@ -212,8 +213,10 @@ How about a matrix of all the same value
        7.42857143   7.6122449    7.79591837   7.97959184   8.16326531
        8.34693878   8.53061224   8.71428571   8.89795918   9.08163265
        9.26530612   9.44897959   9.63265306   9.81632653  10.        ] 
-    Step ----> 0.473684210526
-</div>
+    
+    Step
+    0.473684210526
+```
 
 ### Array with distributed random values
 ####  Array of uniformly distributed random values between 0 and 1
@@ -278,27 +281,27 @@ How about a matrix of all the same value
 
 </div>
 
-## **NumPy Standard Data Types**
+## NumPy Standard Data Types
 
-**bool_** Boolean (True or False) stored as a byte <br>
-**int_** Default integer type (same as C long; normally either int64 or int32) <br>
-**intc** Identical to C int (normally int32 or int64) <br>
-**intp** Integer used for indexing (same as C ssize_t; normally either int32 or int64) <br>
-**int8** Byte (–128 to 127) <br>
-**int16** Integer (–32768 to 32767) <br>
-**int32** Integer (–2147483648 to 2147483647) <br>
-**int64** Integer (–9223372036854775808 to 9223372036854775807) <br>
-**uint8** Unsigned integer (0 to 255) <br>
-**uint16** Unsigned integer (0 to 65535) <br>
-**uint32** Unsigned integer (0 to 4294967295) <br>
-**uint64** Unsigned integer (0 to 18446744073709551615) <br>
-**float_**  Shorthand for float64 <br>
-**float16** Half-precision float: sign bit, 5 bits exponent, 10 bits mantissa <br>
-**float32** Single-precision float: sign bit, 8 bits exponent, 23 bits mantissa <br>
-**float64** Double-precision float: sign bit, 11 bits exponent, 52 bits mantissa <br>
+- **bool_** Boolean (True or False) stored as a byte <br>
+- **int_** Default integer type (same as C long; normally either int64 or int32) <br>
+- **intc** Identical to C int (normally int32 or int64) <br>
+- **intp** Integer used for indexing (same as C ssize_t; normally either int32 or int64) <br>
+- **int8** Byte (–128 to 127) <br>
+- **int16** Integer (–32768 to 32767) <br>
+- **int32** Integer (–2147483648 to 2147483647) <br>
+- **int64** Integer (–9223372036854775808 to 9223372036854775807) <br>
+- **uint8** Unsigned integer (0 to 255) <br>
+- **uint16** Unsigned integer (0 to 65535) <br>
+- **uint32** Unsigned integer (0 to 4294967295) <br>
+- **uint64** Unsigned integer (0 to 18446744073709551615) <br>
+- **float_**  Shorthand for float64 <br>
+- **float16** Half-precision float: sign bit, 5 bits exponent, 10 bits mantissa <br>
+- **float32** Single-precision float: sign bit, 8 bits exponent, 23 bits mantissa <br>
+- **float64** Double-precision float: sign bit, 11 bits exponent, 52 bits mantissa <br>
 
 
-## **NumPy Random Generator - Seed the RandomState**
+## NumPy Random Generator - Seed the RandomState
 numpy random generator can be seeded with a *seed* value to make sure that same random arrays are generated each time the code runs.
 
 Seeding the random generator allows the generator to generate the same random values everytime. It names values in the array predictible

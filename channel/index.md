@@ -67,7 +67,7 @@ img_blue[:,:,2] = blue
 
 ## Approach-2: Array stacking (numpy.dstack)
 
-[*numpy.dstack()*](https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.dstack.html) function stacks the arrays in sequence along the third axis. We create img_zero accordingly and stack the respective color array. You may notice that shape of img_zero varies for each case. 
+[*numpy.dstack()*](https://numpy.org/doc/stable/reference/generated/numpy.dstack.html#numpy-dstack) function stacks the arrays in sequence along the third axis. We create img_zero accordingly and stack the respective color array. You may notice that shape of img_zero varies for each case. 
 
 ```python
 def red_channel_image(img):
