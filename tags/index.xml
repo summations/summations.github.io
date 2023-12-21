@@ -3,5 +3,55 @@
         <title>Tags - Tag - Summations</title>
         <link>https://summations.github.io/tags/</link>
         <description>Tags - Tag - Summations</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://summations.github.io/tags/" rel="self" type="application/rss+xml" /></channel>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>pathakraul@gmail.com (Rahul Pathak)</managingEditor>
+            <webMaster>pathakraul@gmail.com (Rahul Pathak)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 03 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://summations.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>riscv</title>
+    <link>https://summations.github.io/tags/riscv/</link>
+    <pubDate>Fri, 03 Feb 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Rahul Pathak</name>
+    </author><guid>https://summations.github.io/tags/riscv/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>system</title>
+    <link>https://summations.github.io/tags/system/</link>
+    <pubDate>Fri, 03 Feb 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Rahul Pathak</name>
+    </author><guid>https://summations.github.io/tags/system/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>deeplearning</title>
+    <link>https://summations.github.io/tags/deeplearning/</link>
+    <pubDate>Fri, 01 Apr 2022 21:57:40 &#43;0800</pubDate><author>
+        <name>Rahul Pathak</name>
+    </author><guid>https://summations.github.io/tags/deeplearning/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>numpy</title>
+    <link>https://summations.github.io/tags/numpy/</link>
+    <pubDate>Fri, 01 Apr 2022 21:57:40 &#43;0800</pubDate><author>
+        <name>Rahul Pathak</name>
+    </author><guid>https://summations.github.io/tags/numpy/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>configuration</title>
+    <link>https://summations.github.io/tags/configuration/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate><author>
+        <name>Rahul Pathak</name>
+    </author><guid>https://summations.github.io/tags/configuration/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>content</title>
+    <link>https://summations.github.io/tags/content/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate><author>
+        <name>Rahul Pathak</name>
+    </author><guid>https://summations.github.io/tags/content/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>installation</title>
+    <link>https://summations.github.io/tags/installation/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate><author>
+        <name>Rahul Pathak</name>
+    </author><guid>https://summations.github.io/tags/installation/</guid>
+    <description><![CDATA[]]></description>
+</item></channel>
 </rss>

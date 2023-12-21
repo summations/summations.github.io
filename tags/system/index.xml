@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>system - Tag - Summations</title>
+        <link>https://summations.github.io/tags/system/</link>
+        <description>system - Tag - Summations</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>pathakraul@gmail.com (Rahul Pathak)</managingEditor>
+            <webMaster>pathakraul@gmail.com (Rahul Pathak)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 03 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://summations.github.io/tags/system/" rel="self" type="application/rss+xml" /><item>
+    <title>RISC-V Instruction Immediates - Notes</title>
+    <link>https://summations.github.io/riscv-immediates/</link>
+    <pubDate>Fri, 03 Feb 2023 00:00:00 &#43;0000</pubDate><author>
+                    <name>Rahul</name><uri>https://summations.github.io/authors/rahul</uri></author><guid>https://summations.github.io/riscv-immediates/</guid>
+    <description><![CDATA[RISC-V ISA has efficient instructions encodings which are devised to reduce the hardware complexity. Important portion of instruction encoding includes immediates which are sign-extended and packed towards the leftmost available bits in the instruction. To make immediate encoding efficient the sign-bit for all immediates in all applicable formats is always 31st bit in the 32-bit instruction.
+Assembler encodes the numbers in instructions as per the ISA when code is assembled. When code is executed those encodings are converted into 32-bit immediate values by the CPU which are then used to generate the addresses/offsets/numbers according to the executed instruction.]]></description>
+</item></channel>
+</rss>

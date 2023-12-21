@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>numpy - Tag - Summations</title>
+        <link>https://summations.github.io/tags/numpy/</link>
+        <description>numpy - Tag - Summations</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>pathakraul@gmail.com (Rahul Pathak)</managingEditor>
+            <webMaster>pathakraul@gmail.com (Rahul Pathak)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 01 Apr 2022 21:57:40 &#43;0800</lastBuildDate><atom:link href="https://summations.github.io/tags/numpy/" rel="self" type="application/rss+xml" /><item>
+    <title>Numpy Refresher</title>
+    <link>https://summations.github.io/numpy/</link>
+    <pubDate>Fri, 01 Apr 2022 21:57:40 &#43;0800</pubDate><author>
+                    <name>Rahul</name><uri>https://summations.github.io/authors/rahul</uri></author><guid>https://summations.github.io/numpy/</guid>
+    <description><![CDATA[Numpy is a package used for scientific computing in python. Numpy&rsquo;s core is implemented in C/C++ providing fast implementations of matrices operations. Numpy also utilizes the processors SIMD and other instructions to make implementation faster
+1 What is NumpyNumpy is a package used for scientific computing in python. Numpy&rsquo;s core is implemented in C/C++ providing fast implementations of matrices operations. Numpy also utilizes the processors SIMD and other instructions to make implementation faster.]]></description>
+</item><item>
+    <title>RGB Image Channels Plot using Numpy</title>
+    <link>https://summations.github.io/channel/</link>
+    <pubDate>Fri, 01 Apr 2022 21:57:40 &#43;0800</pubDate><author>
+                    <name>Rahul</name><uri>https://summations.github.io/authors/rahul</uri></author><guid>https://summations.github.io/channel/</guid>
+    <description><![CDATA[My curiosity of understanding pixels better made me plot the color channels of an RGB image separately. I was not in pursuit of any hi-fi results but just 3 plots of Red, Green, Blue channels separately. To accomplish this all I needed was slicing and chopping of Numpy arrays. In starting, I was only looking for a simple way to achieve this - but found 3 ways, each little different in terms of numpy function used.]]></description>
+</item></channel>
+</rss>
