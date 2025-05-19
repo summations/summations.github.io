@@ -1,6 +1,6 @@
 [
   {
-    "title": "Mastering Kernel Analysis - Visualizing Function Call Graphs and Hierarchies with Doxygen.",
+    "title": "Mastering Kernel Analysis - Visualizing Function Call Graphs with Doxygen.",
     "url": "/posts/linux-callgraph/",
     "categories": "linux",
     "tags": "debugging, linux",

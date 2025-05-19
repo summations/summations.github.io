@@ -4,7 +4,7 @@
   <id>https://summations.github.io/</id>
   <title>Summations</title>
   <subtitle></subtitle>
-  <updated>2025-05-19T15:06:09+05:30</updated>
+  <updated>2025-05-19T15:12:32+05:30</updated>
   <author>
     <name>Rahul Pathak</name>
     <uri>https://summations.github.io/</uri>
@@ -20,8 +20,8 @@
 
   
   <entry>
-    <title>Mastering Kernel Analysis - Visualizing Function Call Graphs and Hierarchies with Doxygen.</title>
-    <link href="https://summations.github.io/posts/linux-callgraph/" rel="alternate" type="text/html" title="Mastering Kernel Analysis - Visualizing Function Call Graphs and Hierarchies with Doxygen." />
+    <title>Mastering Kernel Analysis - Visualizing Function Call Graphs with Doxygen.</title>
+    <link href="https://summations.github.io/posts/linux-callgraph/" rel="alternate" type="text/html" title="Mastering Kernel Analysis - Visualizing Function Call Graphs with Doxygen." />
     <published>2025-05-15T18:25:00+05:30</published>
   
     <updated>2025-05-15T18:25:00+05:30</updated>
