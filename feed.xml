@@ -4,7 +4,7 @@
   <id>https://summations.github.io/</id>
   <title>Summations</title>
   <subtitle></subtitle>
-  <updated>2025-05-19T15:45:11+05:30</updated>
+  <updated>2025-05-19T22:58:13+05:30</updated>
   <author>
     <name>Rahul Pathak</name>
     <uri>https://summations.github.io/</uri>
@@ -24,7 +24,7 @@
     <link href="https://summations.github.io/posts/linux-callgraph/" rel="alternate" type="text/html" title="Mastering Kernel Analysis - Visualizing Function Call Graphs with Doxygen." />
     <published>2025-05-15T18:25:00+05:30</published>
   
-    <updated>2025-05-19T15:42:33+05:30</updated>
+    <updated>2025-05-15T18:25:00+05:30</updated>
   
     <id>https://summations.github.io/posts/linux-callgraph/</id>
     <content type="text/html" src="https://summations.github.io/posts/linux-callgraph/" />
